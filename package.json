@@ -4,8 +4,8 @@
   "description": "",
   "main": "coffee.js",
   "scripts": {
-    "start": "ts-node ./union/coffee.ts",
-    "watch": "nodemon --exec ts-node ./src/index.ts",
+    "start": "ts-node ./car-practice/car.ts",
+    "watch": "nodemon --exec ts-node ./src/car-practice/car.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

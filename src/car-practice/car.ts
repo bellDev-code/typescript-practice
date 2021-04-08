@@ -1,26 +1,4 @@
-type Car = {
-  name: CarName;
-  brand: CarBrand;
-  price: number;
-  variety: CarVariety;
-  feature: CarCommonFeaures;
-};
-
-type CarCommonFeaures = {
-  fuel: FuelType;
-  engin: string;
-  exhaust?: number;
-};
-
-type FuelType = "Gasoline" | "LPG";
-
-type CarName = "Tucson" | "Avantte" | "XC90" | "AMGGTR";
-
-type CarBrand = "Hyndai" | "Volvo" | "Bents";
-
-type CarOrigin = "Korea" | "Japan" | " USA";
-
-type CarVariety = "SUV" | "Sedan" | "Sports";
+import { Car } from "./advanced.types";
 
 const car1: Car = {
   name: "Tucson",
@@ -73,23 +51,33 @@ const car4: Car = {
 const carFunc = (car: Car) => {
   switch (car.name) {
     case "Tucson":
-      console.log(`${car.name}입니다.`);
+      console.log(
+        `${car.name}입니다. 브랜드는 ${car.brand}이고 가격은 ${car.price}입니다. ${car.feature.fuel}을 사용합니다.`
+      );
       break;
     case "Avantte":
-      console.log(`${car.name}입니다.`);
+      console.log(
+        `${car.name}입니다. 브랜드는 ${car.brand}이고 가격은 ${car.price}입니다. ${car.feature.fuel}을 사용합니다.`
+      );
       break;
     case "XC90":
-      console.log(`${car.name}입니다.`);
+      console.log(
+        `${car.name}입니다. 브랜드는 ${car.brand}이고 가격은 ${car.price}입니다. ${car.feature.fuel}을 사용합니다.`
+      );
       break;
     case "AMGGTR":
-      console.log(`${car.name}입니다.`);
+      console.log(
+        `${car.name}입니다. 브랜드는 ${car.brand}이고 가격은 ${car.price}입니다. ${car.feature.fuel}을 사용합니다.`
+      );
       break;
     default:
       throw new Error(`${car} 는 존재하지 않는 타입입니다.`);
   }
 };
 
-carFunc(car1);
-carFunc(car2);
-carFunc(car3);
-carFunc(car4);
+export const main = () => {
+  carFunc(car1);
+  carFunc(car2);
+  carFunc(car3);
+  carFunc(car4);
+};

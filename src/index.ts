@@ -6,8 +6,13 @@ import { main as advancedMain } from "./union/coffee-advanced";
 // default 가져오기
 // import { main } from "./union/coffee";
 import coffee from "./union/coffee";
+import { main } from "./class/implements-2";
 
-advancedMain();
-// main();
+// import { main } from "./class/inheritance";
+// import { main } from "./class/class";
+// import { main } from "./enum/enum";
+
+// advancedMain();
+main();
 
 // coffee();

@@ -1,26 +1,33 @@
 import * as CryptoJS from "crypto-js";
 
 class Block {
+  // 블록안에서 사용할 수 있는 함수를 만든다.
+  static calculateBlockHash = (index: number, previousHash: string, data: string, timestamp: number): string =>
+    CryptoJS.SHA256(index + previousHash + timestamp + data).toString();
+
+  static validateStructure = (aBlock: Block): boolean =>
+    typeof aBlock.index === "number" &&
+    typeof aBlock.hash === "string" &&
+    typeof aBlock.previosHash === "string" &&
+    typeof aBlock.timestamp === "number" &&
+    typeof aBlock.data === "string";
+
   public index: number;
   public hash: string;
   public previosHash: string;
-  public data: string;
   public timestamp: number;
+  public data: string;
 
-  // 블록안에서 사용할 수 있는 함수를 만든다.
-  static calculateBlockHash = (index: number, previousHash: string, timestamp: number, data: string): string =>
-    CryptoJS.SHA256(index + previousHash + data + timestamp).toString();
-
-  constructor(index: number, hash: string, previosHash: string, timestamp: number, data: string) {
+  constructor(index: number, hash: string, previosHash: string, data: string, timestamp: number) {
     this.index = index;
     this.hash = hash;
     this.previosHash = previosHash;
-    this.timestamp = timestamp;
     this.data = data;
+    this.timestamp = timestamp;
   }
 }
 
-const genesisBlock: Block = new Block(0, "20202020", "", 1234, "hello");
+const genesisBlock: Block = new Block(0, "20202020", "", "hello", 1234);
 
 let blockchain: [Block] = [genesisBlock];
 
@@ -34,12 +41,19 @@ const createNewBlock = (data: string): Block => {
   const previousBlock: Block = getLatestBlock();
   const newIndex: number = previousBlock.index + 1;
   const newTimestamp: number = getNewTimeStamp();
-  const newHash: string = Block.calculateBlockHash(newIndex, previousBlock.hash, newTimestamp, data);
+  const newHash: string = Block.calculateBlockHash(newIndex, previousBlock.hash, data, newTimestamp);
 
-  const newBlock: Block = new Block(newIndex, newHash, previousBlock.hash, newTimestamp, data);
+  const newBlock: Block = new Block(newIndex, newHash, previousBlock.hash, data, newTimestamp);
   return newBlock;
 };
 
-export const main = () => {
-  console.log(createNewBlock("hello"), createNewBlock("bye bye"));
+const isBlockValid = (candidateBlock: Block, previousBlock: Block): boolean => {
+  if (!Block.validateStructure(candidateBlock)) {
+    return false;
+  } else if (previousBlock.index + 1 !== candidateBlock.index) {
+    return false;
+  } else if (previousBlock.hash !== candidateBlock.previosHash) {
+    return false;
+  }
 };
+export const main = () => {};

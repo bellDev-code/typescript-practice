@@ -24,9 +24,9 @@ interface IFood {
 }
 
 class Coffee implements ICoffee, IFood {
-  beans: number;
-  water: number;
-  milk: number;
+  beans: number = 0;
+  water: number = 0;
+  milk: number = 0;
   from: string = "colombia";
   constructor() {}
 

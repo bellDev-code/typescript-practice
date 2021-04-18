@@ -6,7 +6,12 @@ import { main as advancedMain } from "./union/coffee-advanced";
 // default 가져오기
 // import { main } from "./union/coffee";
 import coffee from "./union/coffee";
-import { main } from "./blockChain";
+import { main } from "./utilityType/map";
+// import { main } from "./utilityType/readonly";
+// import { main } from "./utilityType/pick";
+// import { main } from "./utilityType/partial";
+// import { main } from "./generic/generic";
+// import { main } from "./blockChain";
 // import { main } from "./pasta-practice/pasta";
 // import { main } from "./class/implements-2";
 

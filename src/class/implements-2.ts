@@ -12,9 +12,9 @@ interface ICoffee {
 }
 
 class Coffee implements ICoffee, IFood {
-  beans: number;
-  water: number;
-  milk: number;
+  beans: number = 0;
+  water: number = 0;
+  milk: number = 0;
   from: string = "colombia";
 
   constructor() {}
@@ -35,7 +35,7 @@ class Coffee implements ICoffee, IFood {
 interface IPasta {}
 
 class Pasta implements IPasta, IFood {
-  from: "Colombia";
+  from: "Colombia" = "Colombia";
   constructor() {}
 
   verify() {

@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 type Pasta = {
   name: string;
   price: number;
@@ -39,6 +41,12 @@ const getProperty = <T, K extends keyof T>(element: T, key: K) => {
   return element[key];
 };
 
+const updateProperty = <T, K extends keyof T>(element: T, key: K, value: T[K]) => {
+  const result = _.cloneDeep(element);
+  result[key] = value;
+  return result;
+};
+
 export const main = () => {
   const pasta: Pasta = {
     name: "tomato-pasta",
@@ -46,11 +54,17 @@ export const main = () => {
     unit: 1,
   };
 
-  console.log(getName(pasta));
-  console.log(getPrice(pasta));
+  // console.log(getName(pasta));
+  // console.log(getPrice(pasta));
 
-  console.log(getElement(pasta));
+  // console.log(getElement(pasta));
 
-  console.log(getProperty(pasta, "price"));
-  console.log(getProperty(pasta, "unit"));
+  // console.log(getProperty(pasta, "price"));
+  // console.log(getProperty(pasta, "unit"));
+
+  const newPasta = updateProperty(pasta, "name", "AlioOlio");
+  const newPasta2 = updateProperty(newPasta, "price", 3000);
+
+  console.log(newPasta);
+  console.log(newPasta2);
 };

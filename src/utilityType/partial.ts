@@ -15,7 +15,7 @@ type Phone = {
 
 // mutalbe 변성 (shalow copy)
 // console.log(Object.keys(args));
-// const ipdateCoin = (coin: Coin, args: Partial<Coin>) => {
+// const updateCoin = (coin: Coin, args: Partial<Coin>) => {
 // for (const key of Object.keys(args)) {
 //   coin[key] = ars[key]
 // }

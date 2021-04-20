@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/crypto-js": "^4.0.1",
     "@types/lodash": "^4.14.168",
     "crypto-js": "^4.0.0",
     "lodash": "^4.17.21"

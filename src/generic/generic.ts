@@ -26,10 +26,18 @@ type Price = {
   price: number;
 };
 
+type Unit = {
+  unit: number;
+};
+
 // 제네릭 기억하자
 // 재사용성이 매우 뛰어나다.
 const getPrice = <T extends Price>(element: T) => {
   return element.price;
+};
+
+const getUnit = <T extends Unit>(element: T) => {
+  return element.unit;
 };
 
 const getProperty = <T, K extends keyof T>(element: T, key: K) => {
@@ -54,13 +62,14 @@ export const main = () => {
     price: 500000,
     madeBy: "China",
   };
-  console.log(getPriceCoin(coin));
-  console.log(getPricePhone(phone));
-  console.log(getElement(coin));
+  // console.log(getPriceCoin(coin));
+  // console.log(getPricePhone(phone));
+  // console.log(getElement(coin));
 
-  console.log(getPrice(coin));
-  console.log(getPrice(phone));
+  // console.log(getPrice(coin));
+  // console.log(getPrice(phone));
+  console.log(getUnit(coin));
 
-  getProperty(coin, "price");
-  getProperty(phone, "madeBy");
+  // console.log(getProperty(coin, "price"));
+  // console.log(getProperty(phone, "madeBy"));
 };

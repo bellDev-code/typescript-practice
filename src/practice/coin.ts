@@ -117,7 +117,17 @@ const coin04: Coin = {
 };
 
 const coinList = (coin: Coin) => {
-  console.log(`${coin.name}`);
+  switch (coin.name) {
+    case "Bitcoin":
+      console.log(
+        `${coin.info.MarketCapitalization}위의 시가총액이고, ${coin.info.block.blockTime}의 생성주기가 있습니다.`
+      );
+      break;
+    case "CryptoChain":
+      console.log(
+        `${coin.info.MarketCapitalization}위의 시가총액이고, ${coin.info.block.blockTime}의 생성주기가 있습니다.`
+      );
+  }
 };
 
 export const main = () => {

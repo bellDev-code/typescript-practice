@@ -5,6 +5,13 @@ type Coin = (Bitcoin | Ethereum | Doge | CryptoChain) & {
 
 type CoinInformation = {
   limit: number;
+  MarketCapitalization: number;
+  block?: BlockProperty;
+};
+
+type BlockProperty = {
+  blockTime: string;
+  protocol: string;
 };
 
 type Bitcoin = {
@@ -13,25 +20,10 @@ type Bitcoin = {
   unit: number;
 };
 
-type BlockProperty = {
-  blockTime: string;
-  protocol: string;
-};
-
-type BitcoinInfo = CoinInformation & {
-  MarketCapitalization: number;
-  block: BlockProperty;
-};
-
 type Ethereum = {
   name: "Ethereum";
   info: EthereumInfo;
   unit: number;
-};
-
-type EthereumInfo = CoinInformation & {
-  MarketCapitalization: number;
-  block: BlockProperty;
 };
 
 type Doge = {
@@ -40,21 +32,23 @@ type Doge = {
   unit: number;
 };
 
-type DogeInfo = CoinInformation & {
-  MarketCapitalization: number;
-  block: BlockProperty;
-};
-
 type CryptoChain = {
   name: "CryptoChain";
   info: CryptoInfo;
   unit: number;
 };
 
-type CryptoInfo = CoinInformation & {
-  MarketCapitalization: number;
-  block: BlockProperty;
+type Reward = {
+  reward: number;
 };
+
+type BitcoinInfo = CoinInformation;
+
+type EthereumInfo = CoinInformation;
+
+type DogeInfo = CoinInformation & Reward;
+
+type CryptoInfo = CoinInformation;
 
 const coin01: Coin = {
   name: "Bitcoin",
@@ -97,6 +91,7 @@ const coin03: Coin = {
       blockTime: "1분",
       protocol: "Pow",
     },
+    reward: 10000,
     limit: 1000000000000000000,
   },
 };
@@ -108,25 +103,17 @@ const coin04: Coin = {
   kimp: "5%",
   info: {
     MarketCapitalization: 17,
-    block: {
-      blockTime: "20분",
-      protocol: "Pow",
-    },
     limit: 3000000000,
   },
 };
 
 const coinList = (coin: Coin) => {
-  switch (coin.name) {
-    case "Bitcoin":
-      console.log(
-        `${coin.info.MarketCapitalization}위의 시가총액이고, ${coin.info.block.blockTime}의 생성주기가 있습니다.`
-      );
-      break;
-    case "CryptoChain":
-      console.log(
-        `${coin.info.MarketCapitalization}위의 시가총액이고, ${coin.info.block.blockTime}의 생성주기가 있습니다.`
-      );
+  if (coin.info.block) {
+    console.log(
+      `${coin.info.MarketCapitalization}위의 시가총액이고, ${coin.info.block?.blockTime}의 생성주기가 있습니다.`
+    );
+  } else {
+    console.log(`${coin.info.MarketCapitalization}의 시가총액이고, Block의 정보가 없습니다.`);
   }
 };
 

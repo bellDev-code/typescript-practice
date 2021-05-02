@@ -6,8 +6,13 @@ import { main as advancedMain } from "./union/coffee-advanced";
 // default 가져오기
 // import { main } from "./union/coffee";
 import coffee from "./union/coffee";
+import { main } from "./advancedType/optionalProperty";
+// import { main } from "./advancedType/instanceOf";
+// import { main } from "./advancedType/is";
+// import { main } from "./advancedType/objectInCheck";
+// import { main } from "./advancedType/typeGuard";
 // import { main } from "./practice/keyPractice";
-import { main } from "./practice/coin";
+// import { main } from "./practice/coin";
 // import { main } from "./practice/partialPractice";
 // import { main } from "./practice/genericPractice";
 // import { main } from "./utilityType/map";
